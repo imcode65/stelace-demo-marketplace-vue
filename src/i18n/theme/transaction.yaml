@@ -1,0 +1,18 @@
+transaction:
+  status:
+    completed:
+      en: Validated
+      fr: Validé
+    cancelled:
+      withdrawn:
+        en: Withdrawn
+        fr: Retiré
+      refusedByOwner:
+        en: Rejected
+        fr: Rejeté
+      refusedByTaker:
+        en: Withdrawn
+        fr: Retiré
+      forceCancel:
+        en: Cancelled
+        fr: Annulé

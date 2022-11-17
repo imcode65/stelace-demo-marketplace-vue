@@ -1,0 +1,179 @@
+# Email collection entry shared by each email template sent with Stelace Email API
+common:
+  preheader_content: &preheader
+    en: >-
+      Please add <a href="mailto:contact@example.com">contact@example.com</a> to your whitelist
+      to receive our emails.
+    fr: >-
+      Ajoutez <a href="mailto:contact@example.com">contact@example.com</a>
+      à votre carnet d’adresses pour être sûr de recevoir nos emails.
+  trailing_content: &trailing_content
+    en: See you soon!
+    fr: A très vite !
+  footer_content: &footer_text
+    en: >-
+      We’ll be happy to <a href="mailto:contact@example.com">give a hand</a> if you have any question.
+    fr: >-
+      Une question ? Écrivez-nous à l’adresse <a href="mailto:contact@example.com">contact@example.com</a>
+      et nous vous répondrons dès que possible.
+  legal_notice: &legal
+    en: "All rights reserved © 2019 {serviceName, select, undefined {} other {{serviceName}}}"
+    fr: "Tous droits réservés © 2019 {serviceName, select, undefined {} other {{serviceName}}}"
+  style__color_brand: &brand_color
+    en: "#1C3661"
+    fr: "#1C3661"
+  style__color_calltoaction: &cta_color
+    en: "#1C3661"
+    fr: "#1C3661"
+
+# Individual template entry in email collection
+registration:
+  subject:
+    en: >-
+      "Confirm your{serviceName, select,
+        undefined {}
+        other {\_{serviceName}}
+      } email address"
+    fr: >-
+      "Confirmez votre inscription{serviceName, select,
+        undefined {}
+        other {\_sur {serviceName}}
+      }"
+  content:
+    fr: >-
+      Bonjour et bienvenue !<br><br>
+
+      Merci de valider votre adresse e-mail en cliquant sur le bouton ci-dessous.
+  cta__button_url:
+    en: "{emailCheckLink}"
+    fr: "{emailCheckLink}"
+  cta_button__text:
+    en: Confirm email address
+    fr: Valider mon adresse email
+  # Reference use example.
+  # We can’t use YAML merge `<<: *reference` with JSON schema parsing
+  # https://github.com/nodeca/js-yaml/blob/master/lib/js-yaml/schema/json.js
+  # But we can create &reference for each shared content,
+  # unless we use 'common' entry as above.
+  # Note that template specific entry content overrides 'common' entry.
+  trailing_content: *trailing_content
+
+emailCheck:
+  subject:
+    en: >-
+      "Confirm your{serviceName, select,
+        undefined {}
+        other {\_{serviceName}}
+      } email address"
+    fr: >-
+      "Confirmez votre adresse email{serviceName, select,
+        undefined {}
+        other {\_sur {serviceName}}
+      }"
+  content:
+    en: >-
+      Please confirm your new email address by clicking the following button.
+    fr: >-
+      Merci de valider votre adresse e-mail en cliquant sur le bouton ci-dessous.
+  cta__button_url:
+    en: "{emailCheckLink}"
+    fr: "{emailCheckLink}"
+  cta_button__text:
+    en: Confirm email address
+    fr: Vérifier mon email
+
+passwordReset:
+  subject:
+    en: "Lost{serviceName, select,
+        undefined {}
+        other {\_{serviceName}}
+      } password"
+    fr: "Nouveau mot de passe{serviceName, select,
+        undefined {}
+        other {\_{serviceName}}
+      }"
+  content:
+    en: >-
+      Please click the following link to reset your password. If you’ve not initiated this request,
+      please contact us so we can protect your account.
+    fr: >-
+      Si vous êtes à l’origine de cette demande de nouveau mot de passe, merci de cliquer sur le bouton ci-dessous.
+      Dans le cas contraire merci de nous contacter.
+  cta__button_url:
+    en: "{passwordResetLink}"
+    fr: "{passwordResetLink}"
+  cta_button__text:
+    en: Reset password
+    fr: Réinitialiser mon mot de passe
+
+transactionAcceptedByOwnerToTaker:
+  subject:
+    en: Your request about the listing "{assetName}" has been accepted
+    fr: Votre demande au sujet de l’annonce "{assetName}" a été acceptée
+  content:
+    en: >-
+      Hi {takerName},<br><br>
+
+      {ownerName} has accepted your proposition about the listing "{assetName}".<br><br>
+
+      Please go to <a href="{conversationLink}">your inbox</a> to discuss with {ownerName}!
+    fr: >-
+      Bonjour {takerName},<br><br>
+
+      {ownerName} a accepté votre proposition au sujet de l’annonce "{assetName}".<br><br>
+
+      Rendez-vous dans <a href="{conversationLink}">votre messagerie</a> pour échanger avec {ownerName} !
+
+transactionRefusedByOwnerToTaker:
+  subject:
+    en: Your request about the listing "{assetName}" has been rejected
+    fr: Votre demande au sujet de l’annonce "{assetName}" a été refusée
+  content:
+    en: >-
+      Hi {takerName},<br><br>
+
+      {ownerName} has rejected your proposition about the listing "{assetName}".<br><br>
+
+      Please go to <a href="{conversationLink}">your inbox</a> to discuss with {ownerName}!
+    fr: >-
+      Bonjour {takerName},<br><br>
+
+      {ownerName} a refusé votre proposition au sujet de l’annonce "{assetName}".<br><br>
+
+      Rendez-vous dans <a href="{conversationLink}">votre messagerie</a> pour échanger avec {ownerName} !
+
+transactionAcceptedByTakerToOwner:
+  subject:
+    en: The request about the listing "{assetName}" has been confirmed
+    fr: La demande au sujet de l’annonce "{assetName}" a été confirmée
+  content:
+    en: >-
+      Hi {ownerName},<br><br>
+
+      {takerName} has confirmed her request about the listing "{assetName}".<br><br>
+
+      Please go to <a href="{conversationLink}">your inbox</a> to discuss with {takerName}!
+    fr: >-
+      Bonjour {ownerName},<br><br>
+
+      {takerName} a confirmé sa demande au sujet de l’annonce "{assetName}".<br><br>
+
+      Rendez-vous dans <a href="{conversationLink}">votre messagerie</a> pour échanger avec {takerName} !
+
+transactionRefusedByTakerToOwner:
+  subject:
+    en: The request about the listing "{assetName}" has been declined
+    fr: La demande au sujet de l’annonce "{assetName}" a été déclinée
+  content:
+    en: >-
+      Hi {ownerName},<br><br>
+
+      {takerName} has declined her request about the listing "{assetName}".<br><br>
+
+      Please go to <a href="{conversationLink}">your inbox</a> to discuss with {takerName}!
+    fr: >-
+      Bonjour {ownerName},<br><br>
+
+      {takerName} a décliné sa demande au sujet de l’annonce "{assetName}".<br><br>
+
+      Rendez-vous dans <a href="{conversationLink}">votre messagerie</a> pour échanger avec {takerName} !

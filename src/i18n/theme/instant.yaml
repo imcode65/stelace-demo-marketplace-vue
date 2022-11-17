@@ -1,0 +1,23 @@
+instant:
+  config:
+    customAttributes:
+      # Goods marketplace
+      reference_label:
+        en: Reference
+        fr: Référence
+      brand_label:
+        en: Brand
+        fr: Marque
+      dimension_label:
+        en: Dimension
+        fr: Dimensions
+      transport_label:
+        en: Freight included
+        fr: Transport fourni
+      # Housing marketplace
+      passive_label:
+        en: Passive House
+        fr: Habitat passif
+      scenery_label:
+        en: Breathtaking Scenery
+        fr: Paysage unique
